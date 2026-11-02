@@ -3,6 +3,12 @@ using SeniorDevAssignments.Core.Assignment1;
 using SeniorDevAssignments.Core.Assignment2;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Azure / local use ASPNETCORE_URLS; Render/Railway inject PORT.
+var port = Environment.GetEnvironmentVariable("PORT");
+if (!string.IsNullOrWhiteSpace(port))
+    builder.WebHost.UseUrls($"http://+:{port}");
+
 var app = builder.Build();
 
 app.MapGet("/", () => Results.Content(HomeHtml(), "text/html"));
