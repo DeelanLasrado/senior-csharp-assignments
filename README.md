@@ -45,3 +45,10 @@ dotnet run --project src/SeniorDevAssignments.Web
 
 - Assignment 1: worker count is configurable; per-order gates are created lazily and only contend within one entity stream. Horizontal scale is achieved by sharding the inbound bus by `OrderId` upstream and keeping the same in-process gate pattern per node.
 - Assignment 2: single-pass `JsonDocument` parse is O(n) in payload size with no reflection over drifted subtrees beyond the metadata attempt.
+
+## Hosting
+
+- **GitHub:** https://github.com/DeelanLasrado/senior-csharp-assignments
+- **Azure App Service (Free F1):** blocked while subscription `892bf3be-…` is `ReadOnlyDisabledSubscription`. After re-enabling billing / the free trial, run `bash deploy-azure.sh`.
+- **Render (free alternative):** repo includes `Dockerfile` + `render.yaml`. In the [Render dashboard](https://dashboard.render.com) → New → Blueprint → select this repo (no credit card required on free tier).
+- **Local public tunnel (temporary):** with the web project running, `cloudflared tunnel --url http://127.0.0.1:5088`.
